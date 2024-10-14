@@ -3,14 +3,14 @@
 #include <chrono> //измерение времени операции
 #include <memory> //библиотека со стандартными умными указателями STL
 #include <vector> //стандартный контейнер, динамический массив
-//#include "../LR1/matplotlib-cpp-master/matplotlibcpp.h" // Подключаем библиотеку для построения графиков
+
 //
-#include "../LR1/SmtrPtr.h"
+
 #include "../LR1/UnqPtr.h"
 #include "../LR1/ShrdPtr.h"
 #include "../LR1/MsPtr.h"
 #include "../LR1/MemorySpan.h"
-#include "../LR1/SmtrPtr.h"//защита от повторного включения реализовать
+
 #include "../LR1/WTEST_ShrdPtr.h"
 #include "../LR1/WTEST_UnqPtr.h"
 #include "../LR1/WTEST_MemorySpan.h"
@@ -20,7 +20,7 @@ using namespace std;
 //tests
 // Тесты
 
-    int main() {
+    int UI_func() {
 
 
         size_t capacity;
@@ -61,10 +61,7 @@ using namespace std;
 
         std::cout << "\nState of the arrays after operations:" << std::endl;
         memorySpan.showPointers();
-        testMemorySpan();
-        testMsPtr();
-        testShrdPtr();
-        testUnqPtr();
+
 
         loadTestShrdPtr(1000);
         loadTestShrdPtr(100000);
