@@ -1,28 +1,28 @@
 void testShrdPtr() {
-    // Тест 1: Создание ShrdPtr
+
     ShrdPtr<int> p1(new int(5));
-    assert(*p1 == 5); // Проверяем, что значение равно 5
+    assert(*p1 == 5);
 
-    // Тест 2: Конструктор копирования
-    ShrdPtr<int> p2 = p1; // Копируем p1 в p2
-    assert(*p2 == 5); // Проверяем, что значение в p2 равно 5
-    assert(p1.operator->() == p2.operator->()); // Убедимся, что оба указателя указывают на один и тот же адрес
 
-    // Тест 3: Уменьшение счетчика ссылок
+    ShrdPtr<int> p2 = p1;
+    assert(*p2 == 5);
+    assert(p1.operator->() == p2.operator->());
+
+
     {
-        ShrdPtr<int> p3 = p2; // Копируем p2 в p3
-        assert(*p3 == 5); // Проверяем значение
-        assert(p2.operator->() == p3.operator->()); // Убедимся, что оба указателя указывают на один и тот же адрес
-    } // p3 выходит из области видимости, счетчик ссылок должен уменьшиться
+        ShrdPtr<int> p3 = p2;
+        assert(*p3 == 5);
+        assert(p2.operator->() == p3.operator->());
+    }
 
-    // Тест 4: Проверка, что p1 и p2 все еще валидны
+
     assert(*p1 == 5);
     assert(*p2 == 5);
 
-    // Тест 5: Перемещение из UnqPtr
+
     UnqPtr<int> uptr(new int(10));
-    ShrdPtr<int> p4(std::move(uptr)); // Перемещаем uptr в p4
-    assert(*p4 == 10); // Проверяем значение
+    ShrdPtr<int> p4(std::move(uptr));
+    assert(*p4 == 10);
 
     std::cout << "shred OK" << std::endl; // Если все тесты прошли успешно
 }

@@ -5,7 +5,7 @@
 // Код для UnqPtr
 
 
-//Децентрализованное хранение объектов: UnqPtr и ShrdPtr
+
 template <typename T>
 class UnqPtr {
 private:
@@ -13,21 +13,21 @@ private:
 
 public:
 
-    // Метод для получения указателя
+
     T* get() const {
         return ptr;
     }
 
     UnqPtr(T* p = nullptr) : ptr(p) {}
 
-    // Метод для получения указателя и освобождения
+
     T* release() {
         T* temp = ptr;
-        ptr = nullptr; // Освобождаем указатель
+        ptr = nullptr;
         return temp;
     }
 
-    // Освобождение ресурса
+
     ~UnqPtr() {
         delete ptr;
     }
@@ -43,9 +43,9 @@ public:
 
     UnqPtr& operator=(UnqPtr&& other) noexcept {
         if (this != &other) {
-            delete ptr; // Освобождаем текущий указатель
+            delete ptr;
             ptr = other.ptr;
-            other.ptr = nullptr; // Освобождаем указатель
+            other.ptr = nullptr;
         }
         return *this;
     }
